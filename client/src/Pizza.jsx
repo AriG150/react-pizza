@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
 import AddPizza from './AddPizza';
-import {
-  Link 
-} from 'react-router-dom'
+import axios from 'axios';
 
 
 class Pizza extends Component {
   state = {
-    pizzas: []
+    pizzas: [],
+    name: "",
+    size: ""
   }
 
   componentDidMount = () => {
@@ -22,11 +22,30 @@ class Pizza extends Component {
   }
 
   handleNewOrderClick = (e) => {
-    e.preventDefault()
-    console.log("button clicked")
-    const pizzaCopy = [...this.state.pizzas]
+  e.preventDefault()
+  var data = {
+    name: this.state.name,
+    size: this.state.size
+  }
+  axios.post('/pizzas', data)
+  .then((results) => {
+    console.log(results.data)
+  })
+  this.setState = ({
+    name: '',
+    size: ''
+  })
+  }
+
+  onNameChange = (e) => {
     this.setState({
-      pizzas: pizzaCopy
+      name: e.target.nameValue
+    })
+  }
+
+  onSizeChange = (e) => {
+    this.setState({
+      size: e.target.sizeValue
     })
   }
 
@@ -39,7 +58,11 @@ class Pizza extends Component {
           {mappedPizzas}
           <hr/>
         </div>
-        <AddPizza newPizzaOrder={this.handleNewOrderClick}/> 
+        <AddPizza nameValue={this.state.name} 
+                  sizeValue={this.state.size} 
+                  newPizzaOrder={this.handleNewOrderClick} 
+                  nameChange={this.onNameChange} 
+                  sizeChange={this.onSizeChange}/> 
       </div>
     )
   }
