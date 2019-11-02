@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 //Mongoose stuff 
 mongoose.connect('mongodb://localhost/pizza', { useUnifiedTopology: true, useNewUrlParser: true });
