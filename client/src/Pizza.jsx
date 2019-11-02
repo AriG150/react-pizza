@@ -39,13 +39,13 @@ class Pizza extends Component {
 
   onNameChange = (e) => {
     this.setState({
-      name: e.target.value
+      name: e.target.nameValue
     })
   }
 
   onSizeChange = (e) => {
     this.setState({
-      size: e.target.value
+      size: e.target.sizeValue
     })
   }
 
