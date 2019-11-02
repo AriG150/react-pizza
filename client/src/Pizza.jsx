@@ -39,18 +39,18 @@ class Pizza extends Component {
 
   onNameChange = (e) => {
     this.setState({
-      name: e.target.nameValue
+      name: e.target.value
     })
   }
 
   onSizeChange = (e) => {
     this.setState({
-      size: e.target.sizeValue
+      size: e.target.value
     })
   }
 
   render() {
-    const mappedPizzas = this.state.pizzas.map((pizza, id) => <p key={id} > {pizza.size} {pizza.name} -  ${pizza.price} </p>)
+    const mappedPizzas = this.state.pizzas.map((pizza, id) => <p key={id} > {pizza.size} - {pizza.name} </p>)
     return(
       <div>
         <div>

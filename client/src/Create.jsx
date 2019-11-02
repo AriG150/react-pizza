@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import AddTopping from './AddTopping';
+import axios from 'axios';
 
 
 class Create extends Component {
   state= {
-    toppings: []
+    toppings: [],
+    name: ""
   }
 
   componentDidMount= () => {
@@ -24,6 +27,8 @@ class Create extends Component {
       <h1> Get ready to Build! </h1>
       <p> Your Toppings </p>
       {mappedToppings}
+      <hr></hr>
+      <AddTopping  /> 
     </>
     )
   }
