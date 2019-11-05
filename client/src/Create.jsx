@@ -19,6 +19,25 @@ class Create extends Component {
     })
   }
   
+  handleNewToppingClick = (e) => {
+    e.preventDefault()
+    var data = {
+      name: this.state.name
+    }
+    axios.post('/toppings', data)
+    .then((results) => {
+      console.log(results.data)
+    })
+    this.setState({
+      name: e.target.value
+    })
+  }
+
+  onNameChange = (e) => {
+    this.setState({
+      name: e.target.value
+    })
+  }
 
   render() {
     const mappedToppings = this.state.toppings.map((topping, id) => <p key={id} > Your toppings: {topping.name} </p> )
@@ -28,7 +47,7 @@ class Create extends Component {
       <p> Your Toppings </p>
       {mappedToppings}
       <hr></hr>
-      <AddTopping  /> 
+      <AddTopping toppingValue={this.state.name} newTopping={this.handleNewToppingClick} newTopppingChange={this.onNameChange}/> 
     </>
     )
   }
