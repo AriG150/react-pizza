@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 
 const AddTopping = (props) => {
@@ -8,7 +8,7 @@ const AddTopping = (props) => {
       <form>
         Add Topping: <input type="text"
                             value={props.toppingValue}
-                            onChange={props.newTopppingChange}></input>
+                            onChange={props.newTopppingChange} /> 
         <button type="submit" value="submit" onClick={(e) => props.newTopping(e)}> Add your Topping</button>
       </form>
 
